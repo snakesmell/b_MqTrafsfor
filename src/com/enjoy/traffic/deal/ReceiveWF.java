@@ -22,17 +22,25 @@ public class ReceiveWF implements Runnable {
 		String RedisKey=(String) Common.getProperties().get(Common.RedisKey);
 		int conSizeNum=Integer.parseInt((String)Common.getProperties().get(Common.ConSize));
 		int ccThreadNum=Integer.parseInt((String) Common.getProperties().get(Common.CcThread));
+		int size=0;
 		
 		ExecutorService fixThread = Executors.newFixedThreadPool(ccThreadNum);
 		for(int i=0;i<ccThreadNum;i++) {
 			fixThread.submit(new WaterRunnable(con));
 		}
 		try {
+			int i=0;
 			while(true){
+				size=con.size();
+				if(size>=conSizeNum) {//判断线程队列是否已满
+					Thread.sleep(500);
+					continue;
+				}
 				try {
 					Jedis jedis = redis.getJedis();
 					String json = jedis.rpop(RedisKey);
 					jedis.close();
+					System.out.println(++i);
 					//Map map=(Map)JSONValue.parse(message);
 					if(json==null){
 						Thread.sleep(Common.delay());//no data wating...
