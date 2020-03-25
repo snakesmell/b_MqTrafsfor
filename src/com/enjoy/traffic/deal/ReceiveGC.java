@@ -12,21 +12,21 @@ import com.enjoy.traffic.util.MqHelper;
 
 import redis.clients.jedis.Jedis;
 
-public class ReceiveWF implements Runnable {
+public class ReceiveGC implements Runnable {
 	private RedisUtil redis;
 	private ConcurrentLinkedQueue<String> con;
 	public void run() {
 		redis=RedisFactory.createRedis();
 		con = new ConcurrentLinkedQueue<String>();
 		
-		String RedisKey=(String) Common.getProperties().get(Common.RedisWF);
-		int conSizeNum=Integer.parseInt((String)Common.getProperties().get(Common.WfArray));
-		int ccThreadNum=Integer.parseInt((String) Common.getProperties().get(Common.WfThread));
+		String RedisKey=(String) Common.getProperties().get(Common.RedisGC);
+		int conSizeNum=Integer.parseInt((String)Common.getProperties().get(Common.GcArray));
+		int ccThreadNum=Integer.parseInt((String) Common.getProperties().get(Common.GcThread));
 		int size=0;
 		
 		ExecutorService fixThread = Executors.newFixedThreadPool(ccThreadNum);
 		for(int i=0;i<ccThreadNum;i++) {
-			fixThread.submit(new IllegalRunnable(con));
+			fixThread.submit(new WaterRunnable(con));
 		}
 		try {
 			int i=0;

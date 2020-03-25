@@ -57,8 +57,11 @@ public final class Common {
 		}
 		return date;
 	}
-	public static String ConSize="conSize";//每队列容积
-	public static String CcThread="ccThread";//线程数
+	public static String WfArray="wfArray";//每队列容积
+	public static String WfThread="wfThread";//线程数
+	
+	public static String GcArray="gcArray";//每队列容积
+	public static String GcThread="gcThread";//线程数
 	
 	public static boolean True=true;
 	public static boolean False=false;
@@ -169,7 +172,14 @@ public final class Common {
 		}
          return pro;
 	}
-	public static String RedisKey="redis_key";
+	public static String MQURL="mqurl";
+	public static String MQNAME="mqname";
+	public static String MQPW="mqpw";
+	public static String TopicWf="topicWf";
+	public static String TopicGc="topicGc";
+	
+	public static String RedisWF="redis_wf";
+	public static String RedisGC="refis_gc";
 	public static String RedisAddress="redis_add";
 	public static String RedisPort="redis_port";
 	public static String RedisNum="redis_num";
