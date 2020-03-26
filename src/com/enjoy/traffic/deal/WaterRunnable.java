@@ -39,6 +39,7 @@ public class WaterRunnable implements Runnable {
 				}else {
 					//MQ send
 					mqHelper.sendTopicMessage(topic, json);
+					System.out.println(json);
 				}
 			} catch (Exception e) {
 				flag=false;

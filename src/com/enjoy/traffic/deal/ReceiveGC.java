@@ -37,6 +37,7 @@ public class ReceiveGC implements Runnable {
 					continue;
 				}
 				try {
+					
 					Jedis jedis = redis.getJedis();
 					String json = jedis.rpop(RedisKey);
 					jedis.close();
