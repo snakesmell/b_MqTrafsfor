@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public final class Common {
+	public static String GCNUM="GCNUM";
 	/**
 	 * 车辆号牌号码处理，如果旧系统带有颜色，则去除
 	 * @param hphm

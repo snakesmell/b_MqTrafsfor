@@ -22,7 +22,7 @@ public class ServerStart implements ServletContextListener{
 		tf.setDaemon(true);
 		tf.start();
 		
-		ReceiveGC gc = new ReceiveGC();
+		ReceiveGC gc = new ReceiveGC(arg0);
 		Thread tc=new Thread(gc);
 		tc.setDaemon(true);
 		tc.start();

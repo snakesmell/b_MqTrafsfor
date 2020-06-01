@@ -10,6 +10,6 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <listener>
-            <listener-class>com.enjoy.traffic.util.ServerStart</listener-class>
-    </listener>
+    <listener-class>com.enjoy.traffic.util.ServerStart</listener-class>
+  </listener>
 </web-app>
