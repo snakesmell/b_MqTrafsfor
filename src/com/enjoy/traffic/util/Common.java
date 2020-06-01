@@ -178,6 +178,10 @@ public final class Common {
 	public static String TopicWf="topicWf";
 	public static String TopicGc="topicGc";
 	
+	public static String DBURL="dburl";
+	public static String DBUSERNAME="dbusername";
+	public static String DBPASSWORD="dbpassword";
+	
 	public static String RedisWF="redis_wf";
 	public static String RedisGC="refis_gc";
 	public static String RedisAddress="redis_add";
