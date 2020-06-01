@@ -18,6 +18,7 @@ public class ReceiveWF implements Runnable {
 	public void run() {
 		redis=RedisFactory.createRedis();
 		con = new ConcurrentLinkedQueue<String>();
+		Jedis jedis = redis.getJedis();
 		
 		String RedisKey=(String) Common.getProperties().get(Common.RedisWF);
 		int conSizeNum=Integer.parseInt((String)Common.getProperties().get(Common.WfArray));
@@ -37,9 +38,7 @@ public class ReceiveWF implements Runnable {
 					continue;
 				}
 				try {
-					Jedis jedis = redis.getJedis();
 					String json = jedis.rpop(RedisKey);
-					jedis.close();
 					//Map map=(Map)JSONValue.parse(message);
 					if(json==null){
 						Thread.sleep(Common.delay());//no data wating...
